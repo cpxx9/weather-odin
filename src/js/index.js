@@ -1,4 +1,5 @@
 import '../CSS/style.css';
+import '../CSS/reset.css';
 
 function abbrState(input, to) {
   const states = [
