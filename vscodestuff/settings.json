@@ -1,0 +1,57 @@
+{
+  "liveServer.settings.donotShowInfoMsg": true,
+  "explorer.confirmDelete": false,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "workbench.colorTheme": "Monokai Dimmed",
+  "workbench.editor.revealIfOpen": true,
+  "git.autofetch": true,
+  "update.mode": "none",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "bounded",
+  "editor.fontSize": 16,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "[ruby]": {
+    "editor.defaultFormatter": "GitHub.codespaces",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.rulers": [
+      120
+    ],
+    "editor.semanticHighlighting.enabled": true
+  },
+  "git.ignoreRebaseWarning": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "entity.name.type.class.ruby,variable.other.readwrite.instance.ruby,support.class.ruby,entity.other.attribute-name.html",
+        "settings": {
+          "foreground": "#EA6310",
+        },
+      },
+      {
+        "scope": "punctuation.section.function.ruby source.ruby",
+        "settings": {
+          "foreground": "#1094EA",
+        },
+      },
+      {
+        "scope": "constant.numeric.ruby",
+        "settings": {
+          "foreground": "#00CF22",
+        },
+      },
+    ],
+  },
+  "editor.mouseWheelZoom": true
+}

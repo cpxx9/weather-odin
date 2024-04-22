@@ -1,0 +1,11 @@
+
+[
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.clear"
+  }
+  ,{
+    "key": "alt+shift+i",
+    "command": "editor.action.inspectTMScopes"
+  }
+]
