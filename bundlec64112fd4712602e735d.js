@@ -609,7 +609,7 @@ function _getWeather() {
           showLoader();
           _context.prev = 1;
           _context.next = 4;
-          return fetch("http://api.weatherapi.com/v1/forecast.json?key=08b3b4bc92cf4cc2ac8181252242204&q=".concat(id, "&days=3"));
+          return fetch("https://api.weatherapi.com/v1/forecast.json?key=08b3b4bc92cf4cc2ac8181252242204&q=".concat(id, "&days=3"));
         case 4:
           response = _context.sent;
           _context.next = 7;
@@ -658,7 +658,7 @@ function _getLocation() {
           locations = [];
           _context2.prev = 2;
           _context2.next = 5;
-          return fetch("http://api.weatherapi.com/v1/search.json?key=08b3b4bc92cf4cc2ac8181252242204&q=".concat(location));
+          return fetch("https://api.weatherapi.com/v1/search.json?key=08b3b4bc92cf4cc2ac8181252242204&q=".concat(location));
         case 5:
           response = _context2.sent;
           _context2.next = 8;
@@ -762,4 +762,4 @@ document.addEventListener('click', function (e) {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle088b529f1b49fa848f8e.js.map
+//# sourceMappingURL=bundlec64112fd4712602e735d.js.map
