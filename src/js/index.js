@@ -182,6 +182,8 @@ function displaySearchResults(locationArray) {
 
 /* -------------- END FUNCTIONS -------------- */
 let locations = [];
+const searchInput = document.querySelector('#weatherLocation');
+
 navigator.geolocation.getCurrentPosition((position) => {
   getLocation(`${position.coords.latitude},${position.coords.longitude}`).then(
     (locationData) => {
@@ -192,7 +194,6 @@ navigator.geolocation.getCurrentPosition((position) => {
   );
 });
 
-const searchInput = document.querySelector('#weatherLocation');
 searchInput.addEventListener('input', (e) => {
   if (e.target.value) {
     getLocation(e.target.value).then((data) => {
