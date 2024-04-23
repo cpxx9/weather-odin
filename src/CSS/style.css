@@ -17,6 +17,14 @@ body {
   justify-content: space-around;
 }
 
+.loader {
+  display: none;
+}
+
+div.loader.show-loader {
+  display: block;
+}
+
 /* .search {
   flex: 1;
 } */

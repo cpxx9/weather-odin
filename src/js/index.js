@@ -75,19 +75,34 @@ function abbrState(input, to) {
   }
 }
 
+function showLoader() {
+  const loader = document.querySelector('.loader');
+  loader.classList.add('.show-loader');
+}
+
+function hideLoader() {
+  const loader = document.querySelector('.loader');
+  loader.classList.remove('.show-loader');
+}
+
 async function getWeather(id) {
+  showLoader();
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=08b3b4bc92cf4cc2ac8181252242204&q=id:${id}`
+      `http://api.weatherapi.com/v1/forecast.json?key=08b3b4bc92cf4cc2ac8181252242204&q=id:${id}&days=3`
     );
     const data = await response.json();
     if (response.status !== 200) {
+      hideLoader();
       console.log('Server error:', data.error.message);
       return false;
     }
+    hideLoader();
     return data;
   } catch (error) {
+    hideLoader();
     console.log('Fetch error:', error);
+    return false;
   }
 }
 
@@ -108,6 +123,11 @@ async function getLocation(location = '') {
     console.log('Fetch error:', error);
     return false;
   }
+}
+
+function processWeather(data) {
+  const forecast = data.forecast.forecastday;
+  console.log(forecast);
 }
 
 function displaySearchResults(locationArray) {
@@ -143,7 +163,7 @@ searchInput.addEventListener('input', (e) => {
 document.addEventListener('click', (e) => {
   if (e.target.className === 'location-list-item') {
     getWeather(locations[e.target.dataset.locationIndex].id).then((data) =>
-      console.log(data)
+      processWeather(data)
     );
   }
 });
