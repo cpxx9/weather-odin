@@ -37,10 +37,16 @@ body {
 
 .results-container ul li {
   cursor: pointer;
+  padding: 0 4px;
+  border-radius: 3px;
 }
 
 .results-container ul li:hover {
   background-color: lightgray;
+}
+
+.results-container hr {
+  margin: 4px 0;
 }
 
 .content.forecast {

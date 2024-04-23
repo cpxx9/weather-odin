@@ -157,9 +157,6 @@ function displayWeather(data) {
       newData[newCard.dataset.id].maxtemp
     }`;
   });
-
-  console.log(forecastCards[0].children);
-  console.log(forecast);
 }
 
 function displaySearchResults(locationArray) {
