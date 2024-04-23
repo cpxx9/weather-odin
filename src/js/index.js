@@ -177,6 +177,9 @@ function displaySearchResults(locationArray) {
         abbr !== undefined ? abbr : location.region
       }`;
       locationList.appendChild(locationWrapper);
+      if (index < locationArray.length - 1) {
+        locationList.appendChild(document.createElement('hr'));
+      }
     });
   }
 }
