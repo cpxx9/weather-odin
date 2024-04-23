@@ -77,32 +77,31 @@ function abbrState(input, to) {
 
 function showLoader() {
   const loader = document.querySelector('.loader');
-  loader.classList.add('.show-loader');
+  loader.style.display = 'block';
 }
 
 function hideLoader() {
   const loader = document.querySelector('.loader');
-  loader.classList.remove('.show-loader');
+  loader.style.display = 'none';
 }
 
 async function getWeather(id) {
   showLoader();
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=08b3b4bc92cf4cc2ac8181252242204&q=id:${id}&days=3`
+      `http://api.weatherapi.com/v1/forecast.json?key=08b3b4bc92cf4cc2ac8181252242204&q=${id}&days=3`
     );
     const data = await response.json();
     if (response.status !== 200) {
-      hideLoader();
       console.log('Server error:', data.error.message);
       return false;
     }
-    hideLoader();
     return data;
   } catch (error) {
-    hideLoader();
     console.log('Fetch error:', error);
     return false;
+  } finally {
+    hideLoader();
   }
 }
 
@@ -149,7 +148,18 @@ function displaySearchResults(locationArray) {
   }
 }
 
+/* -------------- END FUNCTIONS -------------- */
 let locations = [];
+navigator.geolocation.getCurrentPosition((position) => {
+  getLocation(`${position.coords.latitude},${position.coords.longitude}`).then(
+    (locationData) => {
+      getWeather(locationData[0].name).then((weatherData) =>
+        processWeather(weatherData)
+      );
+    }
+  );
+});
+
 const searchInput = document.querySelector('#weatherLocation');
 searchInput.addEventListener('input', (e) => {
   if (e.target.value) {
@@ -162,8 +172,8 @@ searchInput.addEventListener('input', (e) => {
 
 document.addEventListener('click', (e) => {
   if (e.target.className === 'location-list-item') {
-    getWeather(locations[e.target.dataset.locationIndex].id).then((data) =>
-      processWeather(data)
+    getWeather(`id:${locations[e.target.dataset.locationIndex].id}`).then(
+      (data) => processWeather(data)
     );
   }
 });
