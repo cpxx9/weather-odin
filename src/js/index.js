@@ -124,8 +124,40 @@ async function getLocation(location = '') {
   }
 }
 
-function processWeather(data) {
+function processWeatherData(data) {
   const forecast = data.forecast.forecastday;
+  const proccessedWeatherData = [];
+  forecast.forEach((day) => {
+    proccessedWeatherData.push({
+      icon: `${day.day.condition.icon}`,
+      avgtemp: `${day.day.avgtemp_f}`,
+      text: `${day.day.condition.text}`,
+      mintemp: `${day.day.mintemp_f}`,
+      maxtemp: `${day.day.maxtemp_f}`,
+    });
+  });
+
+  return proccessedWeatherData;
+}
+
+function displayWeather(data) {
+  const newData = processWeatherData(data);
+  const forecast = data.forecast.forecastday;
+  const forecastCards = document.querySelectorAll('.forecast-card');
+  forecastCards.forEach((card) => {
+    const newCard = card;
+    newCard.children[1].src = newData[newCard.dataset.id].icon;
+    newCard.children[2].textContent = newData[newCard.dataset.id].avgtemp;
+    newCard.children[3].textContent = newData[newCard.dataset.id].text;
+    newCard.children[4].textContent = `Low: ${
+      newData[newCard.dataset.id].mintemp
+    }`;
+    newCard.children[5].textContent = `High: ${
+      newData[newCard.dataset.id].maxtemp
+    }`;
+  });
+
+  console.log(forecastCards[0].children);
   console.log(forecast);
 }
 
@@ -153,9 +185,9 @@ let locations = [];
 navigator.geolocation.getCurrentPosition((position) => {
   getLocation(`${position.coords.latitude},${position.coords.longitude}`).then(
     (locationData) => {
-      getWeather(locationData[0].name).then((weatherData) =>
-        processWeather(weatherData)
-      );
+      getWeather(locationData[0].name).then((weatherData) => {
+        displayWeather(weatherData);
+      });
     }
   );
 });
@@ -173,7 +205,7 @@ searchInput.addEventListener('input', (e) => {
 document.addEventListener('click', (e) => {
   if (e.target.className === 'location-list-item') {
     getWeather(`id:${locations[e.target.dataset.locationIndex].id}`).then(
-      (data) => processWeather(data)
+      (data) => displayWeather(data)
     );
   }
 });
