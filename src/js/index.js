@@ -143,7 +143,6 @@ function processWeatherData(data) {
 
 function displayWeather(data) {
   const newData = processWeatherData(data);
-  const forecast = data.forecast.forecastday;
   const forecastCards = document.querySelectorAll('.forecast-card');
   forecastCards.forEach((card) => {
     const newCard = card;

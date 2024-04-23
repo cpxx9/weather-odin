@@ -26,6 +26,11 @@ body {
   justify-content: end;
 }
 
+.content.search input {
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+
 .results-container ul {
   list-style: none;
   padding: 5px;
