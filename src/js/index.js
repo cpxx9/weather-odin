@@ -89,7 +89,7 @@ async function getWeather(id) {
   showLoader();
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=08b3b4bc92cf4cc2ac8181252242204&q=${id}&days=3`
+      `https://api.weatherapi.com/v1/forecast.json?key=08b3b4bc92cf4cc2ac8181252242204&q=${id}&days=3`
     );
     const data = await response.json();
     if (response.status !== 200) {
@@ -109,7 +109,7 @@ async function getLocation(location = '') {
   const locations = [];
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/search.json?key=08b3b4bc92cf4cc2ac8181252242204&q=${location}`
+      `https://api.weatherapi.com/v1/search.json?key=08b3b4bc92cf4cc2ac8181252242204&q=${location}`
     );
     const data = await response.json();
     if (response.status !== 200) {
