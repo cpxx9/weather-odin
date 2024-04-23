@@ -26,6 +26,33 @@ body {
   justify-content: end;
 }
 
+.results-container ul {
+  list-style: none;
+  padding: 5px;
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 3px;
+}
+
+.results-container ul li {
+  border-bottom: 1px solid grey;
+  padding-bottom: 8px;
+}
+
+.results-container ul li:first-child {
+  padding-top: 8px;
+}
+
+.results-container ul li:last-child {
+  border-bottom: none;
+}
+
+.results-container ul li:hover {
+  opacity: 0.8;
+}
+
 .content.forecast {
   flex: 3;
   align-items: center;

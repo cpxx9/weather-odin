@@ -1,5 +1,6 @@
 import '../CSS/style.css';
 import '../CSS/reset.css';
+import _ from 'lodash';
 
 function abbrState(input, to) {
   const states = [
@@ -183,6 +184,7 @@ function displaySearchResults(locationArray) {
 /* -------------- END FUNCTIONS -------------- */
 let locations = [];
 const searchInput = document.querySelector('#weatherLocation');
+const searchResults = document.querySelector('.results-container');
 
 navigator.geolocation.getCurrentPosition((position) => {
   getLocation(`${position.coords.latitude},${position.coords.longitude}`).then(
@@ -203,10 +205,15 @@ searchInput.addEventListener('input', (e) => {
   }
 });
 
+searchInput.addEventListener('search', () => {
+  searchResults.textContent = '';
+});
+
 document.addEventListener('click', (e) => {
   if (e.target.className === 'location-list-item') {
     getWeather(`id:${locations[e.target.dataset.locationIndex].id}`).then(
       (data) => displayWeather(data)
     );
+    searchResults.textContent = '';
   }
 });
