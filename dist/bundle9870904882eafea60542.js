@@ -17984,8 +17984,10 @@ var locations = [];
 var searchInput = document.querySelector('#weatherLocation');
 var searchResults = document.querySelector('.results-container');
 navigator.geolocation.getCurrentPosition(function (position) {
+  showLoader();
   getLocation("".concat(position.coords.latitude, ",").concat(position.coords.longitude)).then(function (locationData) {
     getWeather(locationData[0].name).then(function (weatherData) {
+      hideLoader();
       displayWeather(weatherData);
     });
   });
@@ -18013,4 +18015,4 @@ document.addEventListener('click', function (e) {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlef3aaec6085f577f0f4a6.js.map
+//# sourceMappingURL=bundle9870904882eafea60542.js.map
