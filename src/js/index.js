@@ -186,9 +186,11 @@ const searchInput = document.querySelector('#weatherLocation');
 const searchResults = document.querySelector('.results-container');
 
 navigator.geolocation.getCurrentPosition((position) => {
+  showLoader();
   getLocation(`${position.coords.latitude},${position.coords.longitude}`).then(
     (locationData) => {
       getWeather(locationData[0].name).then((weatherData) => {
+        hideLoader();
         displayWeather(weatherData);
       });
     }

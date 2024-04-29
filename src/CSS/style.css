@@ -70,15 +70,39 @@ body {
 }
 
 .forecast-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.7fr 1.1fr 0.7fr;
+  grid-template-rows: 0.2fr 1fr;
+  grid-template-areas:
+    '. mid .'
+    'left mid right';
   gap: 32px;
 }
 
+#leftCard {
+  grid-area: left;
+}
+
+#midCard {
+  grid-area: mid;
+}
+#rightCard {
+  grid-area: right;
+}
+
 .forecast-card {
-  width: 200px;
+  width: 250px;
+  height: 300px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 20px 8px;
+}
+
+.main-forecast-card {
+  border: 3px solid gray;
 }
 
 @keyframes spin {
